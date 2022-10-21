@@ -3,13 +3,20 @@ package vetor;
 public class Vetor {
 	
 	private int tamanhoVetor;
-	int[] v1;
+	private int[] v1;
 	
 	public Vetor(int tamanhoVetor) {
-		this.tamanhoVetor = tamanhoVetor;
+		this.setTamanhoVetor(tamanhoVetor);
 		v1 = new int[tamanhoVetor];
 	}
 	
+	public int getTamanhoVetor() {
+		return tamanhoVetor;
+	}
+
+	public void setTamanhoVetor(int tamanhoVetor) {
+		this.tamanhoVetor = tamanhoVetor;
+	}
 	
 	public void inserirDado(int dado) {
 		for(int i=0; i < v1.length; i++) {
@@ -42,6 +49,8 @@ public class Vetor {
 			System.out.println("Posicao " + i + "= " + v1[i]);
 		}
 	}
+
+
 	
 	
 	

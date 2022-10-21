@@ -1,95 +1,109 @@
 import java.util.Scanner;
+
+import lista.Lista;
+import menu.Menus;
 import vetor.Vetor;
 
 public class Principal {
 
 	public static void main(String[] args) {
 
-		int opcao;
-		Vetor v2 = new Vetor(10);
-		
 		Scanner s = new Scanner(System.in);
 
-		System.out.println("-------------------");
-		System.out.println("|  1 - Vetor      |");
-		System.out.println("|  2 - Lista      |");
-		System.out.println("-------------------");
-		System.out.println("\nSelecione a opção desejada:");
+		Menus.menuInicial();
+		int opcaoInicial = s.nextInt();
 
-		opcao = s.nextInt();
-
-		switch (opcao) {
-			case 1: 
+		while (true) {
+			switch (opcaoInicial) {
+			case 1: // opçao vetor
+				Vetor meuVetor = new Vetor(10);
 				int opcaoVetor = 0;
-				
-				while(opcaoVetor != 5) {					
-					
-					
-					System.out.println("---------------------");
-					System.out.println("|        Vetor       |");
-					System.out.println("---------------------");
-					System.out.println("| 1 - Inserir dado   |");
-					System.out.println("| 2 - Alterar dado   |");
-					System.out.println("| 3 - Pesquisar dado |");
-					System.out.println("| 4 - Mostrar dados  |");
-					System.out.println("| 5 - Voltar         |");
-					System.out.println("\nSelecione a opção desejada:");
-					
-					opcaoVetor = s.nextInt();
-					
-					switch (opcaoVetor) {
-						case 1: 
-							System.out.println("Digite um valor inteiro para inserir no vetor: ");
-							int valor1 = s.nextInt();
-							v2.inserirDado(valor1);
-							break;	
-							
-						case 2: 						
-							System.out.println("Digite o índice:");
-							int indice = s.nextInt();							
-							System.out.println("Digite o valor:");
-							int valor2 = s.nextInt();
-							
-							v2.alterarDado(indice, valor2);
-							break;	
-							
-						case 3: 
-							System.out.println("Qual o valor deseja pesquisar no vetor?");
-							int d = s.nextInt();
-							v2.pesquisarDado(d);
-							break;
-							
-						case 4: 						
-							v2.mostrarDados();
-							break;
-							
-						case 5:
-							break;				
-					}
-				
-				
-				System.out.println("-------------------");
-				System.out.println("|  1 - Vetor      |");
-				System.out.println("|  2 - Lista      |");
-				System.out.println("-------------------");
-				System.out.println("\nSelecione a opção desejada:");
-			}
-				break;
-			case 2: 
-				System.out.println("---------------------");
-				System.out.println("|        Lista       |");
-				System.out.println("---------------------");
-				System.out.println("| 1 - Inserir dado   |");
-				System.out.println("| 2 - Alterar dado   |");
-				System.out.println("| 3 - Excluir dado   |");
-				System.out.println("| 4 - Pesquisar dado |");
-				System.out.println("| 5 - Mostrar dados  |");
-				System.out.println("| 6 - Voltar         |");
-				System.out.println("\nSelecione a opção desejada:");
-				break;
-		}
 
-		
+				while (opcaoVetor != 5) {
+					Menus.menuVetor();
+					opcaoVetor = s.nextInt();
+
+					switch (opcaoVetor) {
+					case 1: // INSERIR DADO
+						System.out.println("Informe um valor inteiro para inserir no vetor: ");
+						int valor1 = s.nextInt();
+						meuVetor.inserirDado(valor1);
+						break;
+
+					case 2: // ALTERAR DADO
+						System.out.println("Informe o índice que receberá a alteração:");
+						int indice = s.nextInt();
+						System.out.println("Informe o novo valor inteiro:");
+						int valor2 = s.nextInt();
+
+						meuVetor.alterarDado(indice, valor2);
+						break;
+
+					case 3: // PESQUISAR DADO
+						System.out.println("Qual o valor deseja pesquisar no vetor?");
+						int d = s.nextInt();
+						meuVetor.pesquisarDado(d);
+						break;
+
+					case 4: // MOSTRAR DADOS
+						meuVetor.mostrarDados();
+						break;
+
+					case 5: // VOLTAR
+						opcaoInicial = s.nextInt();
+						break;
+					}
+				}
+				break;
+
+			case 2: // opção lista			
+				Lista minhaLista = new Lista(null, null, 0);
+				int opcaoLista = 0;
+
+				while (opcaoLista != 6) {
+					Menus.menuLista();;
+					opcaoLista = s.nextInt();					
+
+					switch (opcaoLista) {
+					case 1: // INSERIR DADO
+						System.out.println("Informe um valor inteiro para inserir um nó na lista: ");
+						int valor3 = s.nextInt();						
+						minhaLista.inserirDado(valor3);					
+						break;
+
+					case 2: // ALTERAR DADO
+						System.out.println("Informe a posição que receberá a alteração:");
+						int indice = s.nextInt();
+						System.out.println("Informe um novo valor inteiro para o nó:");
+						int valor4 = s.nextInt();
+						minhaLista.alterarDado(indice, valor4);
+						break;
+
+					case 3: // EXCLUIR DADO
+						System.out.println("Informe a posição a ser excluída da lista de nós: ");
+//						int valor5 = s.nextInt();
+//						lista.excluirNo(valor5);
+						break;
+
+					case 4: // PESQUISAR DADOS
+						System.out.println("Informe o valor inteiro que deseja pesquisar no vetor: ");
+						int d = s.nextInt();
+//						lista.pesquisarDado(d);
+						break;
+
+					case 5: // MOSTRAR						
+						minhaLista.mostrarDados();						
+						break;
+						
+					case 6: // VOLTAR
+						Menus.menuInicial();
+						opcaoInicial = s.nextInt();
+						break;
+					}
+				}
+				break;
+			}
+		}
 	}
 
 }
