@@ -50,6 +50,7 @@ public class Principal {
 						break;
 
 					case 5: // VOLTAR
+						Menus.menuInicial();
 						opcaoInicial = s.nextInt();
 						break;
 					}
@@ -73,22 +74,22 @@ public class Principal {
 
 					case 2: // ALTERAR DADO
 						System.out.println("Informe a posição que receberá a alteração:");
-						int indice = s.nextInt();
+						int posicao = s.nextInt();
 						System.out.println("Informe um novo valor inteiro para o nó:");
 						int valor4 = s.nextInt();
-						minhaLista.alterarDado(indice, valor4);
+						minhaLista.alterarDado(posicao, valor4);
 						break;
 
 					case 3: // EXCLUIR DADO
 						System.out.println("Informe a posição a ser excluída da lista de nós: ");
-//						int valor5 = s.nextInt();
-//						lista.excluirNo(valor5);
+						int valor5 = s.nextInt();
+						minhaLista.excluirDado(valor5);
 						break;
 
 					case 4: // PESQUISAR DADOS
 						System.out.println("Informe o valor inteiro que deseja pesquisar no vetor: ");
 						int d = s.nextInt();
-//						lista.pesquisarDado(d);
+						minhaLista.pesquisarDado(d);
 						break;
 
 					case 5: // MOSTRAR						

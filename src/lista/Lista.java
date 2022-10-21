@@ -46,16 +46,30 @@ public class Lista {
 		}
 	}
 	
-	public void alterarDado(int indice, int valor) {
-		
+	public void alterarDado(int posicao, int novoValor) {
+		selecionarDado(posicao).setValor(novoValor);
 	}
 	
-	public void excluirDado(int novoValor) {
+	public void excluirDado(int posicao) {
+		No anterior = selecionarDado(posicao).getAnterior();
+		No proximo = selecionarDado(posicao).getProximo();	
 		
+		selecionarDado(posicao).getProximo().setAnterior(anterior);
+		selecionarDado(posicao).getAnterior().setProximo(proximo);
+		
+		tamanho--;
 	}
 	
-	public void pesquisarDado(int novoValor) {
-		
+	public void pesquisarDado(int dado) {
+		No atual = primeiro;
+		for(int i=0; i < tamanho; i++) {
+			if(dado == atual.getValor()) {
+				System.out.println("O valor " + dado + " está na posição " + i);
+			}
+			if (atual.getProximo() != null) {
+				atual = atual.getProximo();				
+			}
+		}
 	}
 	
 	public No selecionarDado(int posicao) {
